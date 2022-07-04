@@ -27,7 +27,7 @@ export const handleResponse = async (response: Response) => {
 };
 
 const fetchFile = (f: string) => {
-  if (!inProduction) return require(`../data/${f}.json`);
+  if (!inProduction) return require(`../../public/data/${f}.json`);
 
   return fetch(`/data/${f}.json`)
     .then(handleResponse)
