@@ -120,8 +120,8 @@ const WordCard = ({ word }: IWordCardProps) => {
     </WordCardWord2>
     <WordCardLine />
     <WordCardReading>
-      <div>{word.jp.rmj.replace("-", "·")}</div>
-      <div>{word.cn.py.replace("-", "·")}</div>
+      <div>{word.jp.rmj.replaceAll("-", "·")}</div>
+      <div>{word.cn.py.replaceAll("-", "·")}</div>
     </WordCardReading>
   </WordCardContainer>;
 }
