@@ -15,7 +15,7 @@
     {
       "name": "Transmission",
       "displayURL": "Torrent manager",
-      "url": "http://pi.hole:8081",
+      "url": "http://pi.hole:9091",
       "icon": "file_download"
     }
   ]
