@@ -55,7 +55,6 @@ const App = () => {
           categories={appData.response?.categories}
         />
         <BookmarkList groups={bookmarkData.response?.groups} />
-        <Imprint imprint={imprintData.response} />
       </div>
     </ThemeProvider>
   );
