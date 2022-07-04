@@ -92,6 +92,12 @@ const ContentContainer = styled.div`
   }
 `;
 
+const SettingsButtonContainer = styled.div`
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+`;
+
 interface ISettingsProps {
   themes?: IThemeDataProps;
   search?: ISearchProps;
@@ -112,81 +118,83 @@ const Settings = ({ themes, search }: ISettingsProps) => {
   if (themes === undefined && search === undefined) return <></>;
 
   return (
-    <Modal element="icon" icon="settings" title="Settings">
-      <ContentContainer>
-        {themes !== undefined && (
-          <Section>
-            <SectionHeadline>Theme</SectionHeadline>
-            <FormContainer>
-              <div>
-                <ThemeHeader>Light</ThemeHeader>
-                <ThemeSelect
-                  items={themes.themes}
-                  onChange={(theme: IThemeProps) => setNewLightTheme(theme)}
-                  current={currentLightTheme}
-                  testId="light"
-                ></ThemeSelect>
-              </div>
-              <div>
-                <ThemeHeader>Dark</ThemeHeader>
-                <ThemeSelect
-                  items={themes.themes}
-                  onChange={(theme: IThemeProps) => setNewDarkTheme(theme)}
-                  current={currentDarkTheme}
-                  testId="dark"
-                ></ThemeSelect>
-              </div>
-              <div>
-                <Button
-                  data-testid="button-submit"
-                  onClick={() => {
-                    if (newLightTheme) setTheme("light", newLightTheme);
-                    if (newDarkTheme) setTheme("dark", newDarkTheme);
-                  }}
-                >
-                  Apply
-                </Button>
-              </div>
-              <div>
-                <Button
-                  data-testid="button-refresh"
-                  onClick={() => window.location.reload()}
-                >
-                  Refresh
-                </Button>
-              </div>
-            </FormContainer>
-          </Section>
-        )}
-        {search !== undefined && (
-          <Section>
-            <SectionHeadline>Search Providers</SectionHeadline>
-            <>
-              <Text>Default Search Provider</Text>
-              <Code>{search.defaultProvider}</Code>
-            </>
-            <>
-              {search.providers && (
-                <Table>
-                  <tbody>
-                    <TableRow>
-                      <HeadCell>Search Provider</HeadCell>
-                      <HeadCell>Prefix</HeadCell>
-                    </TableRow>
-                    {search.providers.map(({ name, prefix }, index) => (
-                      <TableRow key={name + index}>
-                        <TableCell>{name}</TableCell>
-                        <TableCell>{prefix}</TableCell>
+    <SettingsButtonContainer>
+      <Modal element="icon" icon="settings" title="Settings">
+        <ContentContainer>
+          {themes !== undefined && (
+            <Section>
+              <SectionHeadline>Theme</SectionHeadline>
+              <FormContainer>
+                <div>
+                  <ThemeHeader>Light</ThemeHeader>
+                  <ThemeSelect
+                    items={themes.themes}
+                    onChange={(theme: IThemeProps) => setNewLightTheme(theme)}
+                    current={currentLightTheme}
+                    testId="light"
+                  ></ThemeSelect>
+                </div>
+                <div>
+                  <ThemeHeader>Dark</ThemeHeader>
+                  <ThemeSelect
+                    items={themes.themes}
+                    onChange={(theme: IThemeProps) => setNewDarkTheme(theme)}
+                    current={currentDarkTheme}
+                    testId="dark"
+                  ></ThemeSelect>
+                </div>
+                <div>
+                  <Button
+                    data-testid="button-submit"
+                    onClick={() => {
+                      if (newLightTheme) setTheme("light", newLightTheme);
+                      if (newDarkTheme) setTheme("dark", newDarkTheme);
+                    }}
+                  >
+                    Apply
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    data-testid="button-refresh"
+                    onClick={() => window.location.reload()}
+                  >
+                    Refresh
+                  </Button>
+                </div>
+              </FormContainer>
+            </Section>
+          )}
+          {search !== undefined && (
+            <Section>
+              <SectionHeadline>Search Providers</SectionHeadline>
+              <>
+                <Text>Default Search Provider</Text>
+                <Code>{search.defaultProvider}</Code>
+              </>
+              <>
+                {search.providers && (
+                  <Table>
+                    <tbody>
+                      <TableRow>
+                        <HeadCell>Search Provider</HeadCell>
+                        <HeadCell>Prefix</HeadCell>
                       </TableRow>
-                    ))}
-                  </tbody>
-                </Table>
-              )}
-            </>
-          </Section>
-        )}
-      </ContentContainer>
-    </Modal>
+                      {search.providers.map(({ name, prefix }, index) => (
+                        <TableRow key={name + index}>
+                          <TableCell>{name}</TableCell>
+                          <TableCell>{prefix}</TableCell>
+                        </TableRow>
+                      ))}
+                    </tbody>
+                  </Table>
+                )}
+              </>
+            </Section>
+          )}
+        </ContentContainer>
+      </Modal>
+    </SettingsButtonContainer>
   );
 };
 
