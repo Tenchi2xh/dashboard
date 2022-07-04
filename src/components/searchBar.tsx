@@ -10,6 +10,7 @@ const Search = styled.form`
   display: flex;
 
   padding-top: 0.25rem;
+  margin-top: 2em;
 `;
 
 const SearchInput = styled.input`
