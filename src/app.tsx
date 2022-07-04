@@ -2,6 +2,7 @@ import { createGlobalStyle, ThemeProvider } from "styled-components";
 
 import SearchBar from "./components/searchBar";
 import Greeter from "./components/greeter";
+import Mainichi from "./components/mainichi";
 import AppList from "./components/appList";
 import BookmarkList from "./components/bookmarks";
 import Settings from "./components/settings";
@@ -37,6 +38,7 @@ const App = () => {
     themeData,
     imprintData,
     greeterData,
+    mainichiData,
   } = useFetch();
 
   const theme = getTheme();
@@ -50,6 +52,7 @@ const App = () => {
         <SearchBar search={searchData.response} />
         <Settings themes={themeData.response} search={searchData.response} />
         <Greeter greeter={greeterData.response} />
+        <Mainichi words={mainichiData.response} />
         <AppList
           apps={appData.response?.apps}
           categories={appData.response?.categories}

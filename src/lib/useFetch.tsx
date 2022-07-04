@@ -6,6 +6,7 @@ import { ISearchProps } from "../components/searchBar";
 import { IThemeDataProps } from "./useTheme";
 import { IImprintProps } from "../components/imprint";
 import { IGreeterDataProps } from "../components/greeter";
+import { IMainichiDataProps } from "../components/mainichi";
 
 export interface IDataProps<I> {
   response?: I;
@@ -42,6 +43,7 @@ interface IFetchProps {
   themeData: IDataProps<IThemeDataProps>;
   imprintData: IDataProps<IImprintProps>;
   greeterData: IDataProps<IGreeterDataProps>;
+  mainichiData: IDataProps<IMainichiDataProps>;
   callback?: () => void;
 }
 
@@ -62,6 +64,8 @@ export const useFetcher = (): IFetchProps => {
     useState<IDataProps<IImprintProps>>(defaults);
   const [greeterData, setGreeterData] =
     useState<IDataProps<IGreeterDataProps>>(defaults);
+  const [mainichiData, setMainichiData] =
+    useState<IDataProps<IMainichiDataProps>>(defaults);
 
   const callback = useCallback(() => {
     const files = [
@@ -71,10 +75,11 @@ export const useFetcher = (): IFetchProps => {
       "themes",
       "imprint",
       "greeter",
+      "cjk",
     ];
 
     Promise.all(files.map((f) => fetchFile(f))).then(
-      ([apps, bookmarks, search, themes, imprint, greeter]: any) => {
+      ([apps, bookmarks, search, themes, imprint, greeter, mainichi]: any) => {
         setAppData({ response: apps });
         setBookmarkData({
           response: bookmarks,
@@ -83,6 +88,7 @@ export const useFetcher = (): IFetchProps => {
         setThemeData({ response: themes });
         setImprintData({ response: imprint });
         setGreeterData({ response: greeter });
+        setMainichiData({ response: mainichi });
       },
     );
   }, []);
@@ -96,6 +102,7 @@ export const useFetcher = (): IFetchProps => {
     themeData,
     imprintData,
     greeterData,
+    mainichiData,
   };
 };
 

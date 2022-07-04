@@ -1,27 +1,22 @@
 {
-  "categories": [
+  "apps": [
     {
-      "name": "Home",
-      "items": [
-        {
-          "name": "Pi-hole",
-          "displayURL": "Local ad-blocking DNS",
-          "url": "http://pi.hole",
-          "icon": "vpn_lock"
-        },
-        {
-          "name": "Open Media Vault",
-          "displayURL": "DIY NAS",
-          "url": "http://pi.hole:8080",
-          "icon": "storage"
-        },
-        {
-          "name": "Transmission",
-          "displayURL": "Torrent manager",
-          "url": "http://pi.hole:8081",
-          "icon": "file_download"
-        }
-      ]
+      "name": "Pi-hole",
+      "displayURL": "Local ad-blocking DNS",
+      "url": "http://pi.hole",
+      "icon": "vpn_lock"
+    },
+    {
+      "name": "Open Media Vault",
+      "displayURL": "DIY NAS",
+      "url": "http://pi.hole:8080",
+      "icon": "storage"
+    },
+    {
+      "name": "Transmission",
+      "displayURL": "Torrent manager",
+      "url": "http://pi.hole:8081",
+      "icon": "file_download"
     }
   ]
 }

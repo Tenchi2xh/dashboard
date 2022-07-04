@@ -18,6 +18,7 @@ const IconContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 0.5rem;
+  font-size: 1.75em;
 `;
 
 const DetailsContainer = styled.div`

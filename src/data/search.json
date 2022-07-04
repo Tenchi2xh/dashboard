@@ -1,5 +1,5 @@
 {
-  "placeholder": "",
+  "placeholder": "Search...",
   "defaultProvider": "https://google.com/search?q=",
   "autoFocus": false,
   "providers": [
